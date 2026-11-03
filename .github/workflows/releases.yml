@@ -38,13 +38,13 @@ jobs:
 
       - name: Get Repository Name in Lowercase
         id: name
-        run: echo image_name=$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]') >> $GITHUB_OUTPUT
+        run: echo image_name=$(echo "${{ github.actor }}/xxl-job" | tr '[:upper:]' '[:lower:]') >> $GITHUB_OUTPUT
 
       - name: Extract metadata (tags, labels) for Docker
         id: meta
         uses: docker/metadata-action@v6
         with:
-          images: ${{ env.REGISTRY }}/xxl-job
+          images: ${{ env.REGISTRY }}/${{ steps.name.outputs.image_name }}
           tags: |
             ${{ steps.version.outputs.version }}
             latest
