@@ -44,7 +44,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v6
         with:
-          images: ${{ env.REGISTRY }}/${{ steps.name.outputs.image_name }}
+          images: ${{ env.REGISTRY }}/xxl-job
           tags: |
             ${{ steps.version.outputs.version }}
             latest
