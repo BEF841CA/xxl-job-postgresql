@@ -34,7 +34,7 @@ jobs:
 
       - name: Read Tag Version
         id: version
-        run: echo version=$(echo "${{ github.event.ref }}") >> $GITHUB_OUTPUT
+        run: echo version=$(echo "${{ github.event.ref }}" | sed 's|refs/tags/||') >> $GITHUB_OUTPUT
 
       - name: Get Repository Name in Lowercase
         id: name
